@@ -6,7 +6,7 @@ sys.stdin = open('1068.txt')
 def dfs(v):
     global cnt
     for w in adj[v]:
-        if not visited[w]:
+        if w != d and not visited[w]:
             visited[w] = 1
             dfs(w)
             if not adj[w]:
@@ -15,21 +15,22 @@ def dfs(v):
 
 N = int(input())
 pa = list(map(int, input().split()))
-d = [int(input())]
-print(pa)
+d = int(input())
+# print('pa :', pa)
 
 adj = [[] for _ in range(N)]
 for i in range(N):
     if pa[i] == -1:
         s = i
-        continue
-    if pa[i] in d:
-        d.append(i)
-    elif i not in d:
+    else:
         adj[pa[i]].append(i)
-print(adj)
+if s == d:
+    print(0)
+    exit()
+# print('adj :', adj)
 cnt = 0
 visited = [0] * N
-visited[0] = 1
+visited[s] = 1
+# print('start point :', s)
 dfs(s)
-print(cnt)
+print(cnt) if cnt else print(1)
