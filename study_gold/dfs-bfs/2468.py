@@ -1,6 +1,8 @@
 # BOJ 2468 안전영역 (dfs)
 import sys
 sys.stdin = open('2468.txt')
+sys.setrecursionlimit(10**6)
+
 dr = [-1, 0, 1, 0]
 dc = [0, 1, 0, -1]
 
