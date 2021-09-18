@@ -44,5 +44,5 @@ for i in range(len(zero)-2):
             jr, jc = zero[j]
             kr, kc = zero[k]
             lab[ir][ic], lab[jr][jc], lab[kr][kc] = 1, 1, 1
-            ans = max(ans, bfs([temp[:] for temp in virus], lab))
+            ans = max(ans, bfs([tmp[:] for tmp in virus], lab))
 print(ans)
