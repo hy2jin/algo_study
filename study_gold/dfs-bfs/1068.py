@@ -16,16 +16,20 @@ def dfs(v):
 N = int(input())
 pa = list(map(int, input().split()))
 d = [int(input())]
+print(pa)
 
 adj = [[] for _ in range(N)]
 for i in range(N):
+    if pa[i] == -1:
+        s = i
+        continue
     if pa[i] in d:
         d.append(i)
-    elif pa[i] != -1 and i not in d and pa[i] not in d:
+    elif i not in d:
         adj[pa[i]].append(i)
-
+print(adj)
 cnt = 0
 visited = [0] * N
 visited[0] = 1
-dfs(0)
+dfs(s)
 print(cnt)
