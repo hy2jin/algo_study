@@ -18,11 +18,14 @@ def dfs(r, c):
 
 N = int(input())
 arr = []
+
 maxH = 0
 for _ in range(N):
     tmp = list(map(int, input().split()))
     maxH = max(maxH, max(tmp))
     arr.append(tmp)
+# arr = [list(map(int, input().split()))]
+# maxH = max(map(max, arr))
 
 ans = 1
 for i in range(1, maxH):
