@@ -30,7 +30,13 @@ for e in eq:
         elif e[i] == '*':
             ans *= A[i+1]
         else:
-            ans = int(ans/A[i+1])
+            # ans = int(ans/A[i+1])         # 이렇게 하면 바로 됨
+            if ans < 0:
+                tmp = -ans
+                tmp //= A[i+1]
+                ans = -tmp
+            else:
+                ans //= A[i+1]
 
     if ans > Mans:
         Mans = ans
