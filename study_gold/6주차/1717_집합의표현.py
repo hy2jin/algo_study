@@ -4,14 +4,13 @@ sys.stdin = open('1717.txt')
 
 
 def find(n):                    # 루트 찾기
-    if parent[n] == n:
-        return n
-    parent[n] = find(parent[n])
+    if parent[n] != n:
+        parent[n] = find(parent[n])
     return parent[n]
 
 
 n, m = map(int, input().split())
-parent = list(range(n+1))
+parent = list(range(n+1))       # idx의 루트: value
 for _ in range(m):
     tmp, a, b = map(int, input().split())
     if tmp:                     # find
