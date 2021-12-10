@@ -24,16 +24,16 @@ N, M, K = map(int, input().split())
 arr = [[0] * M for _ in range(N)]
 visited = [[0] * M for _ in range(N)]
 
-rc = []
+rc = []                     # 음쓰 좌표 리스트
 for _ in range(K):
-    r, c = map(int,input().split())
-    arr[r-1][c-1] = 1
-    rc.append([r-1, c-1])
+    r, c = map(int, input().split())
+    arr[r-1][c-1] = 1       # 음쓰 표시
+    rc.append([r-1, c-1])   # 리스트에 담기
 
 ans = 1
-for r, c in rc:
-    if not visited[r][c]:
-        size = BFS(r, c)
-        if size > ans:
+for r, c in rc:             # 리스트에서 좌표 하나씩 꺼내서
+    if not visited[r][c]:   # 방문한적 없으면
+        size = BFS(r, c)    # BFS로 음쓰 크기 조사
+        if size > ans:      # 가장 큰 음쓰 크기 갱신
             ans = size
 print(ans)
