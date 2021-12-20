@@ -12,8 +12,9 @@ sys.stdin = open('21772.txt')
 
 def recur(r, c, t, eat):
     global ans
-    if ans == max_eat:
-        return
+    # # 이건 왜 없는게 더 빠를까....밑에서 max_eat 구하는거 때문인가?
+    # if ans == max_eat:
+    #     return
     # # 남은 고구마랑 먹을수있는시간 합이 ans보다 작으면 그만 가도 됨 -> 이라고 생각했으나 아니였다. why?
     # if (max_eat - eat) + t < ans:
     #     return
@@ -31,11 +32,11 @@ def recur(r, c, t, eat):
                 arr[nr][nc] = 'S'
             else:
                 recur(nr, nc, t-1, eat)
-    recur(r, c, t-1, eat)
+    # recur(r, c, t-1, eat)
 
 
 R, C, T = map(int, input().split())
-max_eat = 0                 # 모든 고구마(S)의 수
+# max_eat = 0                 # 모든 고구마(S)의 수
 arr = []
 TF = False                  # 가희 좌표 찾으면 True, 가희 좌표는 (sr, sc)
 for i in range(R):
@@ -43,7 +44,7 @@ for i in range(R):
     if not TF and 'G' in arr[i]:
         TF = True
         sr, sc = i, arr[i].index('G')
-    max_eat += arr[i].count('S')
+    # max_eat += arr[i].count('S')
 # print(arr)
 # print(max_eat)
 dr = [0, 1, 0, -1]       # 우, 하, 좌, 상
