@@ -12,7 +12,7 @@ N = int(input())
 
 
 i = 2
-while i*i <= N:         #
+while i*i <= N:         # 여기가 핵심인듯? N이 a*b일때 둘 중 하나는 i보다 작거나 같다...?
     while N % i == 0:
         print(i)
         N //= i
