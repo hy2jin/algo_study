@@ -3,29 +3,23 @@ import sys
 sys.stdin = open('2668.txt')
 input = sys.stdin.readline
 
-def recur(si):
-    global ans
-    if idx == num:
-        ans = list(idx)
-    if si == N:
+def recur(idx, num, i):
+    idx.add(i)
+    num.add(data[i])
+    if data[i] in idx:
+        if idx == num:          # 한 사이클 완성
+            ans.update(idx)     # ans에 추가
         return
-    for i in range(si, N+1):
-        if i not in idx and data[i] not in num:
-            idx.add(i)
-            num.add(data[i])
-            recur(i+1)
-            idx.remove(i)
-            num.remove(data[i])
+    return recur(idx, num, data[i])
 
 N = int(input())
 data = [0] + [int(input()) for _ in range(N)]
-idx = set()
-num = set()
-ans = []
+
+ans = set()
 for i in range(1, N+1):
-    idx.add(i)
-    num.add(data[i])
-    recur(i+1)
+    if i not in ans:            # 아직 추가된 숫자가 아니면
+        recur(set(), set(), i)  # 사이클
+
 print(len(ans))
-for an in ans:
+for an in sorted(list(ans)):
     print(an)
