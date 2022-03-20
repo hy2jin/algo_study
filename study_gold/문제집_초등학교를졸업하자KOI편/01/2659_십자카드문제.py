@@ -1,4 +1,4 @@
-# BOJ 2659 십자키드 문제
+# BOJ 2659 십자카드 문제
 
 def clock(num):
     n1 = int(num)
