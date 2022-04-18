@@ -25,7 +25,7 @@ for _ in range(T):
         for m in range(M):
             if nums[n][m] == 0: continue
 
-            # 같은 값의 위치
+            # 같은 값의 위치를 담는 리스트, 확인할 값
             tmpRC = []
             NUM = nums[n][m]
 
@@ -47,11 +47,14 @@ for _ in range(T):
                 if NUM == nums[n - 1][m]: tmpRC.append((n - 1, m))
                 if NUM == nums[n + 1][m]: tmpRC.append((n + 1, m))
 
+            # 인접한곳에 같은 값이 있으면 그것들 delRC에 담고 현재의 위치도 담아주기
             if len(tmpRC):
                 for tup in tmpRC:
                     delRC.add(tup)
                 delRC.add((n, m))
 
+
+    # 인접한 곳에 같은 수가 없으면?
     if len(delRC) == 0:
         S = cnt = 0
         for a in range(N):
@@ -66,16 +69,18 @@ for _ in range(T):
                     if nums[a][b]:
                         if nums[a][b] > avg: nums[a][b] -= 1
                         elif nums[a][b] < avg: nums[a][b] += 1
+        # 숫자가 0개면 그만
         else: break
 
+    # 인접한곳에 같은 수가 있으면?
     else:
         for delR, delC in delRC:
             nums[delR][delC] = 0
-        # nums[n][m] = 0
+
 
 ans = 0
 for lst in nums:
     ans += sum(lst)
-print(nums)
+# print(nums)
 print(ans)
 
